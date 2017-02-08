@@ -7,6 +7,16 @@ CHANGELOG
 ### 3.0.0-rc12
 
 
+* Minimized image size
+* Changed sr-dockerbuild to allow building with artifacts
+* Changed artifact paths
+* Releasing new version 3.0.0-rc12
+* Changed container name
+* Releasing new version 3.0.0-rc12
+* Initial commit
+### 3.0.0-rc12
+
+
 * Changed container name
 * Releasing new version 3.0.0-rc12
 * Initial commit
