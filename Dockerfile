@@ -50,9 +50,9 @@ RUN ln -s /usr/games/cowsay /usr/bin/cowsay
 #
 # Add Onedata REST clients
 #
-COPY ../onepanel-rest-clients.tar.gz /tmp/onepanel-rest-clients.tar.gz
-COPY ../oneprovider-rest-clients.tar.gz /tmp/oneprovider-rest-clients.tar.gz
-COPY ../onezone-rest-clients.tar.gz /tmp/onezone-rest-clients.tar.gz
+COPY onepanel-rest-clients.tar.gz /tmp/onepanel-rest-clients.tar.gz
+COPY oneprovider-rest-clients.tar.gz /tmp/oneprovider-rest-clients.tar.gz
+COPY onezone-rest-clients.tar.gz /tmp/onezone-rest-clients.tar.gz
 RUN mkdir -p /var/opt/onedata/onepanel
 RUN mkdir -p /var/opt/onedata/oneprovider
 RUN mkdir -p /var/opt/onedata/onezone

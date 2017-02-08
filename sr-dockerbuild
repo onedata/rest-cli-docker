@@ -32,7 +32,7 @@ message(){
 check_if_all_commited(){
     debug "check_if_all_commited" $@
 
-    local no_of_changed_files=$(git status --porcelain |  wc -l)
+    local no_of_changed_files=$(git ls-files -m |  wc -l)
     if [ $no_of_changed_files == 0 ]; then
         debug "check_if_all_commited: no_of_changed_files=$no_of_changed_files"
         return 0 # 0 means true
