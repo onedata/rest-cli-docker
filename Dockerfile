@@ -27,7 +27,7 @@ RUN apt-get install -y bsdmainutils autoconf2.13 make gcc g++ figlet wget \
                                   `apt-mark showauto` \
     && apt-get autoremove --purge -y libx11-6 libx11-data
 
-RUN apt-get install -y zsh libxml2 openssh-client zsh zsh-common wget curl \
+RUN apt-get install -y zsh libxml2-utils openssh-client zsh zsh-common wget curl \
                        cowsay figlet git vim-tiny libjson-perl \
     && apt-get clean
 
