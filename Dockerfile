@@ -1,9 +1,21 @@
-FROM ubuntu:16.10
+FROM gliderlabs/alpine:3.4
 MAINTAINER Bartek Kryza <bkryza@gmail.com>
 
-RUN apt-get update -y && apt-get full-upgrade -y
-RUN apt-get install -y bsdmainutils autoconf2.13 make gcc g++ figlet wget \
-                       python python-dev python-pip \
+RUN sed -i -e 's/v3\.4/edge/g' /etc/apk/repositories && \
+    apk add --update \
+    git \
+    curl \
+    libxml2-utils \
+    bash \
+    figlet \
+    wget \
+    zsh \
+    perl \
+  && rm -rf /var/cache/apk/*
+
+
+RUN apk add --update autoconf2.13 make gcc g++ python python-dev py-pip \
+    && ln -s /usr/bin/autoconf-2.13 /usr/bin/autoconf2.13 \
     && pip install virtualenv \
     && mkdir -p /tmp/spidermonkey \
 	  && cd /tmp/spidermonkey \
@@ -22,19 +34,22 @@ RUN apt-get install -y bsdmainutils autoconf2.13 make gcc g++ figlet wget \
     && cd /tmp \
     && rm -rf spidermonkey \
     && rm -f /usr/local/lib/libmoz* \
-    && apt-get remove --purge -y $python python-dev python-pip make gcc g++ \
-                                  autoconf2.13 git $AUTO_ADDED_PACKAGES \
-                                  `apt-mark showauto` \
-    && apt-get autoremove --purge -y libx11-6 libx11-data
-
-RUN apt-get install -y zsh libxml2-utils openssh-client zsh zsh-common wget curl \
-                       cowsay figlet git vim-tiny libjson-perl \
-    && apt-get clean
+    && apk del autoconf2.13 make gcc g++ python python-dev py-pip
 
 #
 # Install oh-my-zsh
 #
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" || true
+
+#
+# Install cowsay
+#
+RUN cd /tmp && \
+    git clone https://github.com/schacon/cowsay.git && \
+    cd cowsay && \
+    sh install.sh && \
+    cd .. && \
+    rm -rf cowsay
 
 #
 # Install jsawk, resty and pp
