@@ -11,6 +11,9 @@ RUN sed -i -e 's/v3\.4/edge/g' /etc/apk/repositories && \
     wget \
     zsh \
     perl \
+    ncurses \
+    coreutils \
+    util-linux \
   && rm -rf /var/cache/apk/*
 
 
@@ -113,7 +116,7 @@ RUN    echo -n 3.0.0-rc12 > /etc/onedata.release \
 #
 # Setup welcome message
 #
-RUN echo 'cat << EOF\n\
+RUN printf 'cat << EOF\n\
 This Docker provides preconfigured environment for accessing $(tput setaf 6)Onedata$(tput sgr0) REST services\n\
 using command line interface. For convenience, export the following\n\
 environment variables, depending on which service you will access:\n\
