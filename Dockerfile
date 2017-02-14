@@ -14,6 +14,8 @@ RUN sed -i -e 's/v3\.4/edge/g' /etc/apk/repositories && \
     ncurses \
     coreutils \
     util-linux \
+    perl-json \
+    libstdc++ \
   && rm -rf /var/cache/apk/*
 
 
