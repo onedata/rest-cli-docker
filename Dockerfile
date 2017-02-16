@@ -114,7 +114,7 @@ $(tput setaf 4)ONEPROVIDER_BASIC_AUTH$(tput sgr0) - basic authentication credent
 $(tput setaf 5)ONEPANEL_BASIC_AUTH$(tput sgr0) - basic authentication credentials, e.g.: "username:password"\n\
 \n\
 $(tput setaf 5)CDMI_API_KEY$(tput sgr0) - access token, e.g. "ABCDEFGHIJKLMNOP"\n\
-or
+or\n\
 $(tput setaf 5)CDMI_BASIC_AUTH$(tput sgr0) - basic authentication credentials, e.g.: "username:password"\n\
 \n\
 $(tput setaf 7)Basic usage:$(tput sgr0)\n\
