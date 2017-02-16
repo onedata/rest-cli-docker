@@ -66,11 +66,17 @@ fi
 if [[ -n $ONEDATA_API_KEY ]]; then
   export ONEZONE_API_KEY=$ONEDATA_API_KEY
   export ONEPROVIDER_API_KEY=$ONEDATA_API_KEY
-  export ONEPANEL_API_KEY=$ONEDATA_API_KEY
   export CDMI_API_KEY=$ONEDATA_API_KEY
 fi
 
+if [[ -n $ONEDATA_ZONE ]]; then
+  export ONEZONE_HOST="https://$ONEDATA_ZONE:8443"
+fi
 
+if [[ -n $ONEDATA_PROVIDER ]]; then
+  export ONEPROVIDER_HOST="https://$ONEDATA_PROVIDER:8443"
+  export CDMI_HOST="https://$ONEDATA_PROVIDER:8443/cdmi"
+fi
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
