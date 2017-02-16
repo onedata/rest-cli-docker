@@ -99,6 +99,7 @@ environment variables, depending on which service you will access:\n\
 $(tput setaf 3)ONEZONE_HOST$(tput sgr0) - Onezone server URL, e.g. https://zone.example.com:8443\n\
 $(tput setaf 4)ONEPROVIDER_HOST$(tput sgr0) - Oneprovider server URL, e.g. https://provider.example.com:8443\n\
 $(tput setaf 5)ONEPANEL_HOST$(tput sgr0) - Onepanel server URL, e.g. https://zone.example.com:9443\n\
+$(tput setaf 5)CDMI_HOST$(tput sgr0) - Oneprovider CDMI endpoint, e.g. https://provider.example.com:8443/cdmi\n\
 \n\
 as well as:\n\
 \n\
@@ -120,6 +121,8 @@ $(tput setaf 3)Oneprovider REST client:$(tput sgr0)\n\
 $ oneprovider-rest-cli -h\n\
 $(tput setaf 3)Onepanel REST client$(tput sgr0)\n\
 $ onepanel-rest-cli -h\n\
+$(tput setaf 3)CDMI REST client$(tput sgr0)\n\
+$ cdmi-cli -h\n\
 $(tput setaf 3)Get information about specific operation, e.g.:$(tput sgr0)\n\
 $ onezone-rest-cli getUserSpaces -h\n\
 $(tput setaf 3)To switch to another Onedata version, please use the following command, e.g.:$(tput sgr0)\n\
