@@ -56,6 +56,21 @@ plugins=(onedata)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+if [[ -n $ONEDATA_BASIC_AUTH ]]; then
+  export ONEZONE_BASIC_AUTH=$ONEDATA_BASIC_AUTH
+  export ONEPROVIDER_BASIC_AUTH=$ONEDATA_BASIC_AUTH
+  export ONEPANEL_BASIC_AUTH=$ONEDATA_BASIC_AUTH
+  export CDMI_BASIC_AUTH=$ONEDATA_BASIC_AUTH
+fi
+
+if [[ -n $ONEDATA_API_KEY ]]; then
+  export ONEZONE_API_KEY=$ONEDATA_API_KEY
+  export ONEPROVIDER_API_KEY=$ONEDATA_API_KEY
+  export ONEPANEL_API_KEY=$ONEDATA_API_KEY
+  export CDMI_API_KEY=$ONEDATA_API_KEY
+fi
+
+
 
 # export MANPATH="/usr/local/man:$MANPATH"
 

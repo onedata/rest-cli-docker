@@ -14,32 +14,8 @@ RUN sed -i -e 's/v3\.4/edge/g' /etc/apk/repositories && \
     ncurses \
     coreutils \
     util-linux \
-    perl-json \
-    libstdc++ \
+    jq \
   && rm -rf /var/cache/apk/*
-
-
-RUN apk add --update autoconf2.13 make gcc g++ python python-dev py-pip \
-    && ln -s /usr/bin/autoconf-2.13 /usr/bin/autoconf2.13 \
-    && pip install virtualenv \
-    && mkdir -p /tmp/spidermonkey \
-	  && cd /tmp/spidermonkey \
-	  && wget -O/tmp/spidermonkey/mozjs-24.2.0.tar.bz2 https://ftp.mozilla.org/pub/mozilla.org/js/mozjs-24.2.0.tar.bz2 \
-    && export SHELL=/bin/bash \
-    && cd /tmp/spidermonkey \
-	  && tar xjf mozjs-24.2.0.tar.bz2 \
-	  && cd /tmp/spidermonkey/mozjs-24.2.0/js/src \
-	  && autoconf2.13 \
-	  && mkdir build-release \
-	  && cd build-release \
-	  && ../configure \
-    && make \
-    && make install \
-    && make clean \
-    && cd /tmp \
-    && rm -rf spidermonkey \
-    && rm -f /usr/local/lib/libmoz* \
-    && apk del autoconf2.13 make gcc g++ python python-dev py-pip
 
 #
 # Install oh-my-zsh
@@ -56,16 +32,6 @@ RUN cd /tmp && \
     cd .. && \
     rm -rf cowsay
 
-#
-# Install jsawk, resty and pp
-#
-RUN    wget -O/usr/local/bin/jsawk http://github.com/micha/jsawk/raw/master/jsawk \
-    && wget -O/usr/local/bin/resty http://github.com/micha/resty/raw/master/resty \
-    && wget -O/usr/local/bin/pp http://github.com/micha/resty/raw/master/pp \
-    && chmod a+x /usr/local/bin/jsawk \
-    && chmod a+x /usr/local/bin/resty \
-    && chmod a+x /usr/local/bin/pp
-
 ADD onedata-select-version.sh /usr/local/bin/onedata-select-version
 RUN chmod a+x /usr/local/bin/onedata-select-version
 
@@ -81,14 +47,21 @@ ADD _onedata-select-version /usr/local/share/zsh/site-functions/_onedata-select-
 COPY onepanel-rest-clients.tar.gz /tmp/onepanel-rest-clients.tar.gz
 COPY oneprovider-rest-clients.tar.gz /tmp/oneprovider-rest-clients.tar.gz
 COPY onezone-rest-clients.tar.gz /tmp/onezone-rest-clients.tar.gz
+COPY cdmi-rest-client.tar.gz /tmp/cdmi-rest-client.tar.gz
 RUN    mkdir -p /var/opt/onedata/onepanel \
     && mkdir -p /var/opt/onedata/oneprovider \
     && mkdir -p /var/opt/onedata/onezone \
+    && mkdir -p /var/opt/onedata/cdmi \
     && tar -zxf /tmp/onepanel-rest-clients.tar.gz -C /var/opt/onedata/onepanel/ \
     && tar -zxf /tmp/oneprovider-rest-clients.tar.gz -C /var/opt/onedata/oneprovider/ \
     && tar -zxf /tmp/onezone-rest-clients.tar.gz -C /var/opt/onedata/onezone/ \
     && chmod 755 -R /var/opt/onedata \
     && chmod 755 /usr/local/share/zsh/site-functions/_onedata-select-version \
+    && tar -zxf /tmp/cdmi-rest-client.tar.gz -C /var/opt/onedata/cdmi/ \
+    && cp /var/opt/onedata/cdmi/bash/1.1.1/cdmi-cli /usr/local/bin/cdmi-cli \
+    && chmod a+x /usr/local/bin/cdmi-cli \
+    && cp /var/opt/onedata/cdmi/bash/1.1.1/_cdmi-cli /usr/local/share/zsh/site-functions/_cdmi-cli \
+    && chmod 755 /usr/local/share/zsh/site-functions/_cdmi-cli \
     && rm -f /tmp/*.tar.gz
 
 #
