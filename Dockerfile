@@ -80,7 +80,7 @@ RUN echo '\n\
 ADD zshrc /root/.zshrc
 ADD onedata.zsh-theme /root/.oh-my-zsh/themes/onedata.zsh-theme
 ADD onedata.plugin.zsh /root/.oh-my-zsh/plugins/onedata/onedata.plugin.zsh
-RUN    echo -n 3.0.0-rc14 > /etc/onedata.release \
+RUN    echo -n 3.0.0-rc15 > /etc/onedata.release \
     && echo 'export ZSH_THEME="onedata"' >> ~/.zshrc \
     && echo 'export ZSH_PLUGINS=(onedata)' >> ~/.zshrc \
     && echo 'export PS1="[Onedata REST CLI] \$ "' >> ~/.bashrc \

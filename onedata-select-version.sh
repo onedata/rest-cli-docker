@@ -5,7 +5,7 @@ onedata_components=(onezone oneprovider onepanel)
 
 
 declare -a onedata_releases
-onedata_releases=(3.0.0-rc14 3.0.0-rc11 3.0.0-rc10 3.0.0-rc9)
+onedata_releases=(3.0.0-rc15 3.0.0-rc14 3.0.0-rc11 3.0.0-rc10 3.0.0-rc9)
 
 #
 # If no version specified, list available versions
