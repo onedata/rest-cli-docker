@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 declare -a onedata_components
-onedata_components=(onezone oneprovider onepanel)
+onedata_components=(onezone oneprovider onepanel luma)
 
 
 declare -a onedata_releases

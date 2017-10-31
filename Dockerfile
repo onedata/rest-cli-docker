@@ -130,7 +130,7 @@ $ oneprovider-rest-cli -h\n\
 $(tput setaf 3)Onepanel REST client$(tput sgr0)\n\
 $ onepanel-rest-cli -h\n\
 $(tput setaf 3)LUMA REST client$(tput sgr0)\n\
-$ luma-cli -h\n\
+$ luma-rest-cli -h\n\
 $(tput setaf 3)CDMI REST client$(tput sgr0)\n\
 $ cdmi-cli -h\n\
 $(tput setaf 3)Get information about specific operation, e.g.:$(tput sgr0)\n\
