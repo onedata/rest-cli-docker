@@ -6,6 +6,17 @@ CHANGELOG
 
 ### 17.06.0-rc6
 
+* Releasing new version 17.06.0-rc6
+
+
+### 17.06.0-rc6
+
+* Releasing new version 17.06.0-rc6
+* Added LUMA and updated to 17.06.0-rc6
+
+
+### 17.06.0-rc6
+
 
 
 ### 17.06.0-rc2
