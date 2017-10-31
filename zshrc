@@ -78,6 +78,11 @@ if [[ -n $ONEDATA_PROVIDER ]]; then
   export CDMI_HOST="https://$ONEDATA_PROVIDER:8443/cdmi"
 fi
 
+if [[ -n $ONEDATA_LUMA ]]; then
+  export LUMA_HOST="http://$ONEDATA_LUMA:8080"
+fi
+
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
