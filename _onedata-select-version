@@ -1,7 +1,7 @@
 #compdef onedata-select-version
 
 _onedata-select-version() {
-  _arguments "1: :(17.06.0-rc8 17.06.0-rc7 17.06.0-rc6 17.06.0-rc3 17.06.0-rc2)"
+  _arguments "1: :(develop)"
 }
 
 _onedata-select-version "$@"

@@ -83,12 +83,12 @@ RUN echo '\n\
 ADD zshrc /root/.zshrc
 ADD onedata.zsh-theme /root/.oh-my-zsh/themes/onedata.zsh-theme
 ADD onedata.plugin.zsh /root/.oh-my-zsh/plugins/onedata/onedata.plugin.zsh
-RUN    echo -n 17.06.0-rc8 > /etc/onedata.release \
+RUN    echo -n develop > /etc/onedata.release \
     && echo 'export ZSH_THEME="onedata"' >> ~/.zshrc \
     && echo 'export ZSH_PLUGINS=(onedata)' >> ~/.zshrc \
     && echo 'export PS1="[Onedata REST CLI] \$ "' >> ~/.bashrc \
     && echo "compdef _onedata-select-version onedata-select-version" | tee -a ~/.zshrc \
-    && /usr/local/bin/onedata-select-version 17.06.0-rc8 \
+    && /usr/local/bin/onedata-select-version develop \
     && echo "figlet \"O n e d a t a\"" | tee -a ~/.bashrc ~/.zshrc
 
 #
