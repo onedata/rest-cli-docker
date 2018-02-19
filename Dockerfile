@@ -83,12 +83,12 @@ RUN echo '\n\
 ADD zshrc /root/.zshrc
 ADD onedata.zsh-theme /root/.oh-my-zsh/themes/onedata.zsh-theme
 ADD onedata.plugin.zsh /root/.oh-my-zsh/plugins/onedata/onedata.plugin.zsh
-RUN    echo -n 17.06.0-rc8 > /etc/onedata.release \
+RUN    echo -n 18.02.0-beta1 > /etc/onedata.release \
     && echo 'export ZSH_THEME="onedata"' >> ~/.zshrc \
     && echo 'export ZSH_PLUGINS=(onedata)' >> ~/.zshrc \
     && echo 'export PS1="[Onedata REST CLI] \$ "' >> ~/.bashrc \
     && echo "compdef _onedata-select-version onedata-select-version" | tee -a ~/.zshrc \
-    && /usr/local/bin/onedata-select-version 17.06.0-rc8 \
+    && /usr/local/bin/onedata-select-version 18.02.0-beta1 \
     && echo "figlet \"O n e d a t a\"" | tee -a ~/.bashrc ~/.zshrc
 
 #
@@ -99,11 +99,11 @@ This Docker provides preconfigured environment for accessing $(tput setaf 6)Oned
 using command line interface. For convenience, export the following\n\
 environment variables, depending on which service you will access:\n\
 \n\
-$(tput setaf 3)ONEZONE_HOST$(tput sgr0) - Onezone server URL, e.g. https://zone.example.com:8443\n\
-$(tput setaf 4)ONEPROVIDER_HOST$(tput sgr0) - Oneprovider server URL, e.g. https://provider.example.com:8443\n\
+$(tput setaf 3)ONEZONE_HOST$(tput sgr0) - Onezone server URL, e.g. https://zone.example.com\n\
+$(tput setaf 4)ONEPROVIDER_HOST$(tput sgr0) - Oneprovider server URL, e.g. https://provider.example.com\n\
 $(tput setaf 5)ONEPANEL_HOST$(tput sgr0) - Onepanel server URL, e.g. https://zone.example.com:9443\n\
 $(tput setaf 5)LUMA_HOST$(tput sgr0) - LUMA server URL, e.g. http://luma.example.com:8080\n\
-$(tput setaf 5)CDMI_HOST$(tput sgr0) - Oneprovider CDMI endpoint, e.g. https://provider.example.com:8443/cdmi\n\
+$(tput setaf 5)CDMI_HOST$(tput sgr0) - Oneprovider CDMI endpoint, e.g. https://provider.example.com/cdmi\n\
 \n\
 as well as:\n\
 \n\
