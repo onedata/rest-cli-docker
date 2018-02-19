@@ -4,6 +4,11 @@
 CHANGELOG
 ---------
 
+### 18.02.0-beta1
+
+* Updated to 18.02.0-beta1
+
+
 ### 17.06.0-rc8
 
 * Update to 17.06.0-rc8
