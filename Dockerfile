@@ -15,6 +15,8 @@ RUN sed -i -e 's/v3\.4/edge/g' /etc/apk/repositories && \
     coreutils \
     util-linux \
     jq \
+    vim \
+    openssh \
   && rm -rf /var/cache/apk/*
 
 #
@@ -83,12 +85,12 @@ RUN echo '\n\
 ADD zshrc /root/.zshrc
 ADD onedata.zsh-theme /root/.oh-my-zsh/themes/onedata.zsh-theme
 ADD onedata.plugin.zsh /root/.oh-my-zsh/plugins/onedata/onedata.plugin.zsh
-RUN    echo -n 18.02.0-beta1 > /etc/onedata.release \
+RUN    echo -n 18.02.0-rc1 > /etc/onedata.release \
     && echo 'export ZSH_THEME="onedata"' >> ~/.zshrc \
     && echo 'export ZSH_PLUGINS=(onedata)' >> ~/.zshrc \
     && echo 'export PS1="[Onedata REST CLI] \$ "' >> ~/.bashrc \
     && echo "compdef _onedata-select-version onedata-select-version" | tee -a ~/.zshrc \
-    && /usr/local/bin/onedata-select-version 18.02.0-beta1 \
+    && /usr/local/bin/onedata-select-version 18.02.0-rc1 \
     && echo "figlet \"O n e d a t a\"" | tee -a ~/.bashrc ~/.zshrc
 
 #
@@ -136,7 +138,7 @@ $ cdmi-cli -h\n\
 $(tput setaf 3)Get information about specific operation, e.g.:$(tput sgr0)\n\
 $ onezone-rest-cli getUserSpaces -h\n\
 $(tput setaf 3)To switch to another Onedata version, please use the following command, e.g.:$(tput sgr0)\n\
-$ onedata-select-version 17.06.0-rc6\n\
+$ onedata-select-version 18.02.0-rc1\n\
 \n\
 Online Onedata API documentation: https://onedata.org/#/home/api\n\
 \n\
