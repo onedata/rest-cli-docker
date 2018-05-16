@@ -1,7 +1,7 @@
 #compdef onedata-select-version
 
 _onedata-select-version() {
-  _arguments "1: :(18.02.0-rc1 17.06.0-rc8)"
+  _arguments "1: :(18.02.0-rc2 18.02.0-rc1 17.06.0-rc8)"
 }
 
 _onedata-select-version "$@"
