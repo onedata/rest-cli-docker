@@ -247,6 +247,16 @@ then
     done
 fi
 
+JSON_DOCKER_BUILD_REPORT='rest-cli-docker-build-report.json'
+## create json docker build report
+echo "{" > ${JSON_DOCKER_BUILD_REPORT}
+if [[ $CURRENT_TICKET != ""  ]]
+then
+	echo "\"git-branch\": \"$DOCKER_REPOSITORY/$DOCKER_IMAGE_NAME:$CURRENT_TICKET\"," >> ${JSON_DOCKER_BUILD_REPORT}
+fi
+echo "\"git-commit\": \"$DOCKER_REPOSITORY/$DOCKER_IMAGE_NAME:$DOCKER_BUILD_ID\"" >> ${JSON_DOCKER_BUILD_REPORT}
+echo "}" >> ${JSON_DOCKER_BUILD_REPORT}
+
 ## remove image
 if [[ "$DOCKER_ENABLE_REMOVE" == "1" ]]
 then

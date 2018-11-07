@@ -70,12 +70,12 @@ if [[ -n $ONEDATA_API_KEY ]]; then
 fi
 
 if [[ -n $ONEDATA_ZONE ]]; then
-  export ONEZONE_HOST="https://$ONEDATA_ZONE:8443"
+  export ONEZONE_HOST="https://$ONEDATA_ZONE"
 fi
 
 if [[ -n $ONEDATA_PROVIDER ]]; then
-  export ONEPROVIDER_HOST="https://$ONEDATA_PROVIDER:8443"
-  export CDMI_HOST="https://$ONEDATA_PROVIDER:8443/cdmi"
+  export ONEPROVIDER_HOST="https://$ONEDATA_PROVIDER"
+  export CDMI_HOST="https://$ONEDATA_PROVIDER/cdmi"
 fi
 
 if [[ -n $ONEDATA_LUMA ]]; then
