@@ -4,6 +4,37 @@
 CHANGELOG
 ---------
 
+### 18.02.0-rc13
+
+* Updated to 18.02.0-rc13
+* VFS-4916 Added json docker build report
+
+
+### 18.02.0-rc12
+
+* Updated to 18.02.0-rc12
+
+
+### 18.02.0-rc7
+
+* Updated to 18.02.0-rc7
+
+
+### 18.02.0-rc2
+
+* Upgraded to version 18.02.0-rc2
+
+
+### 18.02.0-rc1
+
+* Updated to 18.02.0-rc1
+
+
+### 18.02.0-beta1
+
+* Updated to 18.02.0-beta1
+
+
 ### 17.06.0-rc8
 
 * Update to 17.06.0-rc8

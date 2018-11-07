@@ -5,7 +5,7 @@ onedata_components=(onezone oneprovider onepanel luma)
 
 
 declare -a onedata_releases
-onedata_releases=(develop)
+onedata_releases=(18.02.0-rc13 18.02.0-rc12 18.02.0-rc11 18.02.0-rc7 18.02.0-rc2 18.02.0-rc1 17.06.0-rc8)
 
 #
 # If no version specified, list available versions
