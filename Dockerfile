@@ -1,8 +1,7 @@
-FROM gliderlabs/alpine:3.4
+FROM gliderlabs/alpine:3.9
 MAINTAINER Bartek Kryza <bkryza@gmail.com>
 
-RUN sed -i -e 's/v3\.4/edge/g' /etc/apk/repositories && \
-    apk add --update \
+RUN apk add --update \
     git \
     curl \
     libxml2-utils \
