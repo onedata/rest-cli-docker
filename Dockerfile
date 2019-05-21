@@ -144,4 +144,11 @@ Online Onedata API documentation: https://onedata.org/#/home/api\n\
 EOF\n\
 ' | tee -a ~/.bashrc ~/.zshrc
 
+# Optimization script that splits *-clis into smaller files
+RUN mkdir /fast
+ADD optimize.sh /fast/optimize.sh
+ADD split.pl /usr/local/bin/split.pl
+RUN cd /fast && \
+    ./optimize.sh
+
 ENTRYPOINT ["zsh"]
