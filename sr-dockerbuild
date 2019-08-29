@@ -106,6 +106,13 @@ case $key in
     -r|--remove)
     DOCKER_ENABLE_REMOVE="1"
     ;;
+    -r|--remove)
+    DOCKER_ENABLE_REMOVE="1"
+    ;;
+    --build-arg)
+    BUILD_ARG="--build-arg $2"
+    shift
+    ;;
     *)
 
     # unknown option
@@ -193,7 +200,7 @@ fi
 printf '%s\n' "${TAG_KEYS[@]}"
 
 ## run build and tag if needed
-DOCKER_BUILD_COMMAND="docker build $DOCKER_BUILD_NO_CACHE -t $DOCKER_BUILD_NAME ."
+DOCKER_BUILD_COMMAND="docker build $BUILD_ARG $DOCKER_BUILD_NO_CACHE -t $DOCKER_BUILD_NAME ."
 echo $DOCKER_BUILD_COMMAND
 eval $DOCKER_BUILD_COMMAND
 exit_on_error $? "The build commannd failed: $DOCKER_BUILD_COMMAND"
