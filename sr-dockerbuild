@@ -127,7 +127,7 @@ if check_if_all_commited; then
     message "All files are commited in the current branch.";
 else
     message "Please commit changes before you can generate changelog"
-    exit 1
+    #exit 1
 fi
 
 
