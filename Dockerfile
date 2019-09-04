@@ -144,12 +144,12 @@ $ cdmi-cli -h\n\
 $(tput setaf 3)Get information about specific operation, e.g.:$(tput sgr0)\n\
 $ onezone-rest-cli getUserSpaces -h\n\
 $(tput setaf 3)To switch to another Onedata version, please use the following command, e.g.:$(tput sgr0)\n\
-$ onedata-select-version 18.02.0-rc13\n\
+$ onedata-select-version %s\n\
 \n\
 Online Onedata API documentation: https://onedata.org/#/home/api\n\
 \n\
 EOF\n\
-' | tee -a ~/.bashrc ~/.zshrc
+' "$RELEASE"| tee -a ~/.bashrc ~/.zshrc
 
 # Optimization script that splits *-clis into smaller files
 RUN mkdir /fast
