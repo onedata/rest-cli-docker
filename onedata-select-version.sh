@@ -47,8 +47,8 @@ done
 # Create symbolic links to current version
 #
 for oc in "${onedata_components[@]}"; do
-  cp /var/opt/onedata/$oc/bash/$1/$oc-rest-cli /usr/local/bin/$oc-rest-cli
-  cp /var/opt/onedata/$oc/bash/$1/_$oc-rest-cli /usr/local/share/zsh/site-functions/_$oc-rest-cli
+  cp /var/opt/onedata/$oc/bash/$1/$oc-rest-cli /usr/local/bin/$oc-rest-cli || (echo "Missing $oc source files for version $1" ; exit 1)
+  cp /var/opt/onedata/$oc/bash/$1/_$oc-rest-cli /usr/local/share/zsh/site-functions/_$oc-rest-cli || (echo "Missing $oc source files for version $1" ; exit 1)
   chmod 755 /usr/local/bin/$oc-rest-cli
   chmod 755 /usr/local/share/zsh/site-functions/_$oc-rest-cli
 #  unfunction _$oc-rest-cli
