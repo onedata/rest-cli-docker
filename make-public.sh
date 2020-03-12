@@ -4,13 +4,13 @@ echo "This script will check for the tag of HEAD commit"
 echo "check if the coresponding docker images docker.onedata.org/rest-cli:<RELEASE>"
 echo "double check if it is uploaded in https://hub.docker.com as onedata/rest-cli:<RELEASE>"
 echo "and upload the image to https://hub.docker.com"
-echo 
+echo
 
 RELEASE=$1
 PUBLIC_DOCKER_IMAGE_NAME="onedata/rest-cli"
 PRIVATE_DOCKER_IMAGE_NAME="docker.onedata.org/rest-cli"
 
-if [[ "$RELEASE" == "" ]]; then 
+if [[ "$RELEASE" == "" ]]; then
   if ! RELEASE=$(git describe --exact-match HEAD) ; then
     "[ERROR] The head commit is not tagged, please tag it or supply a RELASE tag as a first argument to the script. Example: ${0##*/} 19.02.0-beta1"
   fi

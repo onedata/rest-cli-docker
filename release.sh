@@ -5,7 +5,7 @@ VERSIONS_FILE="released_versions.txt"
 
 
 if [[ "$RELEASE" == "" ]] ; then
-  "[ERROR] Please supply release name. Example: 19.02.0-beta1"
+  "[ERROR] Please supply release name. Example: 19.02.0"
 fi
 
 echo "Prepending $RELEASE to list of versions in $VERSIONS_FILE"
@@ -23,7 +23,7 @@ echo "The current HEAD is:"
 git --no-pager log -1
 
 read -p "Do you want to push changes and tags to the origin (y/n)? " -n 1 -r
-echo 
+echo
 if [[ $REPLY =~ ^[Yy]$ ]] ;then
   git push
   git push --tags

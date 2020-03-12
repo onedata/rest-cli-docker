@@ -15,7 +15,7 @@ for (( i=0; i<${#rest_clis[*]}; i++ )) ; do
   path_to_rest_cli="$(type -p $rest_cli)"
   mv "$path_to_rest_cli" "$rest_cli_dir"
 
-  cd "$rest_cli_dir" || exit 
+  cd "$rest_cli_dir" || exit
 
   cat "$rest_cli" | split.pl "$PWD" - > "${rest_cli}-fast"
   chmod +x "${rest_cli}-fast"

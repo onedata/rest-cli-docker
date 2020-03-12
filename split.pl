@@ -2,7 +2,7 @@
 use warnings;
 use strict;
 
-# This script takes a shell script and extracts 
+# This script takes a shell script and extracts
 # all the functions to the external sourced files
 
 my $in_function = "";
@@ -13,7 +13,7 @@ while(<>)
   my ($start) = m{^(\w+)\(\)\s*\{$};
   my ($end) = m{^\}$};
 
-  if (defined $start) { 
+  if (defined $start) {
     $in_function = $1 ;
     open FH, "> $in_function.file" or die $in_function;
     print FH "_",$in_function,"() {\n" ;
@@ -24,7 +24,7 @@ while(<>)
     $in_function = "" ;
     print FH "}\n" ;
     print "}\n" ;
-    close FH; 
+    close FH;
   } elsif ($in_function ne "") {
     print FH $_;
   } else {
