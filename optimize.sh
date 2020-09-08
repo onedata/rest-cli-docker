@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-rest_clis=('onezone-rest-cli' 'oneprovider-rest-cli' 'onepanel-rest-cli' 'luma-rest-cli' 'cdmi-cli')
+rest_clis=('onezone-rest-cli' 'oneprovider-rest-cli' 'onepanel-rest-cli' 'cdmi-cli')
 
 rest_clis
 

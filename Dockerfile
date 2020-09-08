@@ -55,17 +55,14 @@ ADD _onedata-select-version /usr/local/share/zsh/site-functions/_onedata-select-
 COPY onepanel-rest-clients.tar.gz /tmp/onepanel-rest-clients.tar.gz
 COPY oneprovider-rest-clients.tar.gz /tmp/oneprovider-rest-clients.tar.gz
 COPY onezone-rest-clients.tar.gz /tmp/onezone-rest-clients.tar.gz
-COPY luma-rest-clients.tar.gz /tmp/luma-rest-clients.tar.gz
 COPY cdmi-rest-client.tar.gz /tmp/cdmi-rest-client.tar.gz
 RUN    mkdir -p /var/opt/onedata/onepanel \
     && mkdir -p /var/opt/onedata/oneprovider \
     && mkdir -p /var/opt/onedata/onezone \
-    && mkdir -p /var/opt/onedata/luma \
     && mkdir -p /var/opt/onedata/cdmi \
     && tar -zxf /tmp/onepanel-rest-clients.tar.gz -C /var/opt/onedata/onepanel/ \
     && tar -zxf /tmp/oneprovider-rest-clients.tar.gz -C /var/opt/onedata/oneprovider/ \
     && tar -zxf /tmp/onezone-rest-clients.tar.gz -C /var/opt/onedata/onezone/ \
-    && tar -zxf /tmp/luma-rest-clients.tar.gz -C /var/opt/onedata/luma/ \
     && tar -zxf /tmp/cdmi-rest-client.tar.gz -C /var/opt/onedata/cdmi/ \
     && chmod 755 -R /var/opt/onedata \
     && chmod 755 /usr/local/share/zsh/site-functions/_onedata-select-version \
@@ -110,7 +107,6 @@ environment variables, depending on which service you will access:\n\
 $(tput setaf 3)ONEZONE_HOST$(tput sgr0) - Onezone server URL, e.g. https://zone.example.com\n\
 $(tput setaf 4)ONEPROVIDER_HOST$(tput sgr0) - Oneprovider server URL, e.g. https://provider.example.com\n\
 $(tput setaf 5)ONEPANEL_HOST$(tput sgr0) - Onepanel server URL, e.g. https://zone.example.com:9443\n\
-$(tput setaf 5)LUMA_HOST$(tput sgr0) - LUMA server URL, e.g. http://luma.example.com:8080\n\
 $(tput setaf 5)CDMI_HOST$(tput sgr0) - Oneprovider CDMI endpoint, e.g. https://provider.example.com/cdmi\n\
 \n\
 as well as:\n\
@@ -137,8 +133,6 @@ $(tput setaf 3)Oneprovider REST client:$(tput sgr0)\n\
 $ oneprovider-rest-cli -h\n\
 $(tput setaf 3)Onepanel REST client$(tput sgr0)\n\
 $ onepanel-rest-cli -h\n\
-$(tput setaf 3)LUMA REST client$(tput sgr0)\n\
-$ luma-rest-cli -h\n\
 $(tput setaf 3)CDMI REST client$(tput sgr0)\n\
 $ cdmi-cli -h\n\
 $(tput setaf 3)Get information about specific operation, e.g.:$(tput sgr0)\n\

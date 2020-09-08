@@ -78,10 +78,6 @@ if [[ -n $ONEDATA_PROVIDER ]]; then
   export CDMI_HOST="https://$ONEDATA_PROVIDER/cdmi"
 fi
 
-if [[ -n $ONEDATA_LUMA ]]; then
-  export LUMA_HOST="http://$ONEDATA_LUMA:8080"
-fi
-
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
