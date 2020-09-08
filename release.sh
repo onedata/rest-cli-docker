@@ -9,7 +9,7 @@ if [[ "$RELEASE" == "" ]] ; then
 fi
 
 echo "Prepending $RELEASE to list of versions in $VERSIONS_FILE"
-echo -en "$RELEASE $(cat $VERSIONS_FILE)" >$VERSIONS_FILE
+echo -e "$RELEASE\n$(cat $VERSIONS_FILE)" > $VERSIONS_FILE
 echo "New released_versions.txt: $(cat $VERSIONS_FILE)"
 
 echo "Creating a commit for a release $RELEASE..."
