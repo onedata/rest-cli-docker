@@ -11,7 +11,7 @@ PUBLIC_DOCKER_IMAGE_NAME="onedata/rest-cli"
 PRIVATE_DOCKER_IMAGE_NAME="docker.onedata.org/rest-cli"
 
 if [[ "$RELEASE" == "" ]]; then
-  if ! RELEASE=$(git describe --exact-match HEAD) ; then
+  if ! RELEASE=$(git describe --tags --exact-match HEAD) ; then
     echo "[ERROR] The head commit is not tagged, please tag it or supply a RELASE tag as a first argument to the script. Example: ${0##*/} 19.02.0-beta1"
     exit 1
   fi
