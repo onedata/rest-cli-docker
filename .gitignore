@@ -1,3 +1,4 @@
 dockerimage*
 *.tar.gz
 .idea
+*.iml
