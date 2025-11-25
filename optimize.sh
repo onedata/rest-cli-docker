@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-rest_clis=('onezone-rest-cli' 'oneprovider-rest-cli' 'onepanel-rest-cli' 'cdmi-cli')
+# TODO: VFS-13171 oneprovider-rest-cli script is broken after optimization - fix it and
+# restore below
+rest_clis=('onezone-rest-cli' 'onepanel-rest-cli' 'cdmi-cli')
 
 rest_clis
 
