@@ -1,5 +1,12 @@
-FROM gliderlabs/alpine:3.9
+FROM alpine:3.22.2
 MAINTAINER Bartek Kryza <bkryza@gmail.com>
+
+#
+# Mandatory argument when building this docker image
+# Specifies the release version of the rest-cli
+# example value: 18.02.1-rc1
+#
+ARG RELEASE
 
 RUN apk add --update \
     git \
@@ -48,17 +55,14 @@ ADD _onedata-select-version /usr/local/share/zsh/site-functions/_onedata-select-
 COPY onepanel-rest-clients.tar.gz /tmp/onepanel-rest-clients.tar.gz
 COPY oneprovider-rest-clients.tar.gz /tmp/oneprovider-rest-clients.tar.gz
 COPY onezone-rest-clients.tar.gz /tmp/onezone-rest-clients.tar.gz
-COPY luma-rest-clients.tar.gz /tmp/luma-rest-clients.tar.gz
 COPY cdmi-rest-client.tar.gz /tmp/cdmi-rest-client.tar.gz
 RUN    mkdir -p /var/opt/onedata/onepanel \
     && mkdir -p /var/opt/onedata/oneprovider \
     && mkdir -p /var/opt/onedata/onezone \
-    && mkdir -p /var/opt/onedata/luma \
     && mkdir -p /var/opt/onedata/cdmi \
     && tar -zxf /tmp/onepanel-rest-clients.tar.gz -C /var/opt/onedata/onepanel/ \
     && tar -zxf /tmp/oneprovider-rest-clients.tar.gz -C /var/opt/onedata/oneprovider/ \
     && tar -zxf /tmp/onezone-rest-clients.tar.gz -C /var/opt/onedata/onezone/ \
-    && tar -zxf /tmp/luma-rest-clients.tar.gz -C /var/opt/onedata/luma/ \
     && tar -zxf /tmp/cdmi-rest-client.tar.gz -C /var/opt/onedata/cdmi/ \
     && chmod 755 -R /var/opt/onedata \
     && chmod 755 /usr/local/share/zsh/site-functions/_onedata-select-version \
@@ -84,12 +88,12 @@ RUN echo '\n\
 ADD zshrc /root/.zshrc
 ADD onedata.zsh-theme /root/.oh-my-zsh/themes/onedata.zsh-theme
 ADD onedata.plugin.zsh /root/.oh-my-zsh/plugins/onedata/onedata.plugin.zsh
-RUN    echo -n 18.02.1 > /etc/onedata.release \
+RUN echo -n "$RELEASE" > /etc/onedata.release \
     && echo 'export ZSH_THEME="onedata"' >> ~/.zshrc \
     && echo 'export ZSH_PLUGINS=(onedata)' >> ~/.zshrc \
     && echo 'export PS1="[Onedata REST CLI] \$ "' >> ~/.bashrc \
     && echo "compdef _onedata-select-version onedata-select-version" | tee -a ~/.zshrc \
-    && /usr/local/bin/onedata-select-version 18.02.1 \
+    && /usr/local/bin/onedata-select-version "$RELEASE" \
     && echo "figlet \"O n e d a t a\"" | tee -a ~/.bashrc ~/.zshrc
 
 #
@@ -103,7 +107,6 @@ environment variables, depending on which service you will access:\n\
 $(tput setaf 3)ONEZONE_HOST$(tput sgr0) - Onezone server URL, e.g. https://zone.example.com\n\
 $(tput setaf 4)ONEPROVIDER_HOST$(tput sgr0) - Oneprovider server URL, e.g. https://provider.example.com\n\
 $(tput setaf 5)ONEPANEL_HOST$(tput sgr0) - Onepanel server URL, e.g. https://zone.example.com:9443\n\
-$(tput setaf 5)LUMA_HOST$(tput sgr0) - LUMA server URL, e.g. http://luma.example.com:8080\n\
 $(tput setaf 5)CDMI_HOST$(tput sgr0) - Oneprovider CDMI endpoint, e.g. https://provider.example.com/cdmi\n\
 \n\
 as well as:\n\
@@ -130,19 +133,17 @@ $(tput setaf 3)Oneprovider REST client:$(tput sgr0)\n\
 $ oneprovider-rest-cli -h\n\
 $(tput setaf 3)Onepanel REST client$(tput sgr0)\n\
 $ onepanel-rest-cli -h\n\
-$(tput setaf 3)LUMA REST client$(tput sgr0)\n\
-$ luma-rest-cli -h\n\
 $(tput setaf 3)CDMI REST client$(tput sgr0)\n\
 $ cdmi-cli -h\n\
 $(tput setaf 3)Get information about specific operation, e.g.:$(tput sgr0)\n\
 $ onezone-rest-cli getUserSpaces -h\n\
 $(tput setaf 3)To switch to another Onedata version, please use the following command, e.g.:$(tput sgr0)\n\
-$ onedata-select-version 18.02.0-rc13\n\
+$ onedata-select-version %s\n\
 \n\
 Online Onedata API documentation: https://onedata.org/#/home/api\n\
 \n\
 EOF\n\
-' | tee -a ~/.bashrc ~/.zshrc
+' "$RELEASE"| tee -a ~/.bashrc ~/.zshrc
 
 # Optimization script that splits *-clis into smaller files
 RUN mkdir /fast

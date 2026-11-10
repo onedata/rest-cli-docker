@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 declare -a onedata_components
-onedata_components=(onezone oneprovider onepanel luma)
+onedata_components=(onezone oneprovider onepanel)
 
 
 declare -a onedata_releases
-onedata_releases=(18.02.1 18.02.0-rc13 18.02.0-rc12 18.02.0-rc11 18.02.0-rc7 18.02.0-rc2 18.02.0-rc1 17.06.0-rc8)
+onedata_releases=LIST_OF_RELEASES__SUPPLIED_AT_BUILD_TIME
 
 #
 # If no version specified, list available versions
@@ -47,8 +47,8 @@ done
 # Create symbolic links to current version
 #
 for oc in "${onedata_components[@]}"; do
-  cp /var/opt/onedata/$oc/bash/$1/$oc-rest-cli /usr/local/bin/$oc-rest-cli
-  cp /var/opt/onedata/$oc/bash/$1/_$oc-rest-cli /usr/local/share/zsh/site-functions/_$oc-rest-cli
+  cp /var/opt/onedata/$oc/bash/$1/$oc-rest-cli /usr/local/bin/$oc-rest-cli || (echo "Missing $oc source files for version $1" ; exit 1)
+  cp /var/opt/onedata/$oc/bash/$1/_$oc-rest-cli /usr/local/share/zsh/site-functions/_$oc-rest-cli || (echo "Missing $oc source files for version $1" ; exit 1)
   chmod 755 /usr/local/bin/$oc-rest-cli
   chmod 755 /usr/local/share/zsh/site-functions/_$oc-rest-cli
 #  unfunction _$oc-rest-cli
